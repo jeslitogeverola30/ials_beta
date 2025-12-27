@@ -1,0 +1,882 @@
+/* ABOUT PAGE STYLES */
+
+/* --- HEADER --- */
+.about-header {
+  position: relative;
+  background: radial-gradient(circle at 50% 100%, #1e5c25 0%, #0f3b1e 100%);
+  color: white;
+  padding-top: 1rem;
+  min-height: 400px;
+  overflow: visible;
+}
+
+.bio-background-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.bio-particle {
+  position: absolute;
+  top: 110%;
+  opacity: 0.6;
+  animation-name: driftUp;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes driftUp {
+  0% {
+    top: 110%;
+    transform: translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.3;
+  }
+  90% {
+    opacity: 0.3;
+  }
+  100% {
+    top: -20%;
+    transform: translateX(50px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* TOP BAR */
+.about-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 5%;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 20;
+}
+
+.about-back-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.about-back-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
+}
+
+.logo-container-about {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-circle-small-about {
+  width: 40px;
+  height: 40px;
+  background: white;
+  border-radius: 50%;
+  padding: 2px;
+  overflow: hidden;
+}
+
+.logo-img-about {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.brand-name-about {
+  font-weight: 700;
+  font-size: 1.4rem;
+  letter-spacing: -0.5px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.app-btn-about {
+  background: #ffffff;
+  border: none;
+  color: var(--primary-green);
+  padding: 12px 28px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+.app-btn-about:hover {
+  transform: translateY(-3px);
+  background: #f0fdf4;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+.app-btn-about svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+/* NAVBAR */
+.navbar-about {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 20px auto 0 auto;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 6px 8px;
+  border-radius: 100px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.nav-item-about {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 8px 24px;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.nav-item-about:not(.active):hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.nav-item-about.active {
+  background: #ffffff;
+  color: #14532d;
+  font-weight: 600;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+}
+
+.nav-item-about.more {
+  padding-right: 16px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Dropdown Menu */
+.about-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: rgba(15, 40, 15, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  min-width: 200px;
+  padding: 8px 0;
+  margin-top: 8px;
+  display: none;
+  flex-direction: column;
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+}
+
+.about-dropdown:hover .about-dropdown-menu {
+  display: flex;
+}
+
+.about-dropdown-item {
+  background: none;
+  border: none;
+  color: white;
+  padding: 12px 20px;
+  text-align: left;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  font-family: inherit;
+}
+
+.about-dropdown-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* CURVE SEPARATOR */
+.curve-separator-about {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  line-height: 0;
+}
+
+.wave-svg-about {
+  display: block;
+  width: 100%;
+  height: 120px;
+}
+
+/* --- MAIN CONTENT --- */
+.about-main-content {
+  position: relative;
+  margin-top: -140px;
+  padding-bottom: 60px;
+  z-index: 20;
+}
+
+/* WHO WE ARE SECTION */
+.who-we-are-section {
+  max-width: 900px;
+  margin: 0 auto 60px auto;
+  padding: 0 20px;
+  position: relative;
+  z-index: 10;
+}
+
+.who-we-are-card {
+  background: linear-gradient(135deg, #1e5c25 0%, #2a8a3d 100%);
+  border-radius: 16px;
+  padding: 40px;
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  color: white;
+}
+
+.who-we-are-logo {
+  width: 100px;
+  height: 100px;
+  flex-shrink: 0;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.who-we-are-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.who-we-are-content h2 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.who-we-are-content p {
+  font-size: 1rem;
+  line-height: 1.6;
+  opacity: 0.95;
+}
+
+/* VISION AND MISSION SECTION */
+.vision-mission-section {
+  max-width: 1000px;
+  margin: 0 auto 60px auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.vision-card,
+.mission-card {
+  background: white;
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.vision-card:hover,
+.mission-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  border-color: var(--button-green);
+}
+
+.vm-icon {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 20px auto;
+  color: var(--button-green);
+}
+
+.vm-icon svg {
+  width: 100%;
+  height: 100%;
+  stroke: currentColor;
+}
+
+.vision-card h3,
+.mission-card h3 {
+  font-size: 1.2rem;
+  color: var(--text-dark);
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.vision-card p,
+.mission-card p {
+  font-size: 0.95rem;
+  color: var(--text-light);
+  line-height: 1.7;
+}
+
+/* DEAN SECTION */
+.dean-section {
+  max-width: 900px;
+  margin: 0 auto 60px auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.dean-card {
+  background: linear-gradient(135deg, #1d7522 0%, #2a8a3d 100%);
+  border-radius: 16px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  color: white;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 400px;
+}
+
+.dean-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: white;
+  padding: 3px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.dean-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.dean-info {
+  text-align: center;
+}
+
+.dean-title {
+  font-size: 0.95rem;
+  opacity: 0.9;
+  margin: 0;
+  font-weight: 500;
+}
+
+.dean-name {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 5px 0 0 0;
+}
+
+/* TEAM SECTION */
+.team-section {
+  max-width: 1200px;
+  margin: 0 auto 60px auto;
+  padding: 0 20px;
+}
+
+.team-section h2 {
+  font-size: 1.8rem;
+  color: var(--text-dark);
+  text-align: center;
+  margin-bottom: 50px;
+  font-weight: 700;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+.team-member-card {
+  background: white;
+  border-radius: 12px;
+  padding: 25px 20px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  border: 2px solid #f0f0f0;
+}
+
+.team-member-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  border-color: var(--button-green);
+}
+
+.member-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 15px auto;
+  background: #f0f0f0;
+  border: 3px solid var(--button-green);
+}
+
+.member-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.member-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.member-title {
+  font-size: 0.8rem;
+  color: var(--text-light);
+  margin: 0;
+  font-weight: 500;
+}
+
+.member-name {
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  font-weight: 600;
+  margin: 0;
+}
+
+/* --- FOOTER --- */
+.about-footer {
+  position: relative;
+  margin-top: 100px;
+  background: radial-gradient(circle at 50% 0%, #1e5c25 0%, #0f3b1e 100%);
+  color: white;
+  text-align: center;
+  padding-bottom: 40px;
+  overflow: visible;
+}
+
+.about-footer .bio-background-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.about-footer-curve {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  width: 100%;
+  line-height: 0;
+  z-index: 5;
+}
+
+.about-footer-wave-svg {
+  display: block;
+  width: 100%;
+  height: 100px;
+}
+
+.about-footer-content {
+  position: relative;
+  z-index: 10;
+  padding: 0 20px;
+}
+
+.about-footer-logo-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  margin-top: -40px;
+}
+
+.logo-circle-footer-about {
+  width: 80px;
+  height: 80px;
+  background: white;
+  border-radius: 50%;
+  padding: 5px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 4px solid var(--light-green);
+}
+
+.logo-img-small-about {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about-footer-text {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.about-footer-divider-line {
+  width: 100px;
+  height: 2px;
+  background-color: rgba(255,255,255,0.2);
+  margin: 20px auto;
+  border-radius: 2px;
+}
+
+.about-footer-sub {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.85rem;
+  margin-bottom: 15px;
+}
+
+.about-footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.about-footer-links span {
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.about-footer-links span:hover {
+  color: white;
+}
+
+/* CSS Variables for colors */
+:root {
+  --primary-green: #14532d;
+  --light-green: #2a8a3d;
+  --button-green: #1d7522;
+  --text-dark: #1f2937;
+  --text-light: #6b7280;
+  --white: #ffffff;
+  --bg-off-white: #f9fafb;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+  .about-header {
+    min-height: 280px;
+  }
+
+  .about-top-bar {
+    padding: 12px 15px;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .logo-circle-small-about {
+    width: 35px;
+    height: 35px;
+  }
+
+  .brand-name-about {
+    font-size: 0.95rem;
+    max-width: 180px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .app-btn-about {
+    padding: 8px 16px;
+    font-size: 0.8rem;
+    flex-shrink: 0;
+  }
+
+  .navbar-about {
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 8px 6px;
+    width: 90%;
+    margin: 12px auto 0 auto;
+  }
+
+  .nav-item-about {
+    padding: 8px 14px;
+    font-size: 0.85rem;
+  }
+
+  .about-main-content {
+    margin-top: -70px;
+    padding: 30px 15px 40px 15px;
+  }
+
+  .who-we-are-section {
+    margin: 0 auto 40px auto;
+  }
+
+  .who-we-are-card {
+    flex-direction: column;
+    padding: 25px 20px;
+    text-align: center;
+  }
+
+  .who-we-are-logo {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 15px auto;
+  }
+
+  .who-we-are-content h2 {
+    font-size: 1.1rem;
+  }
+
+  .who-we-are-content p {
+    font-size: 0.95rem;
+  }
+
+  .vision-mission-section {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .vision-card,
+  .mission-card {
+    padding: 25px 20px;
+  }
+
+  .vm-icon {
+    width: 50px;
+    height: 50px;
+  }
+
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .team-section h2 {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+  }
+
+  .wave-svg-about {
+    height: 60px;
+  }
+
+  .curve-separator-about {
+    height: 60px;
+    margin-top: 15px;
+  }
+
+  .about-footer {
+    margin-top: 20px;
+  }
+
+  .about-footer-content {
+    padding: 20px 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-header {
+    min-height: 240px;
+    padding-top: 0.5rem;
+  }
+
+  .about-top-bar {
+    padding: 10px 12px;
+    gap: 8px;
+  }
+
+  .logo-circle-small-about {
+    width: 32px;
+    height: 32px;
+  }
+
+  .brand-name-about {
+    font-size: 0.8rem;
+    max-width: 140px;
+  }
+
+  .app-btn-about {
+    padding: 6px 12px;
+    font-size: 0.7rem;
+  }
+
+  .navbar-about {
+    width: 95%;
+    gap: 4px;
+    padding: 6px 4px;
+  }
+
+  .nav-item-about {
+    padding: 7px 10px;
+    font-size: 0.75rem;
+  }
+
+  .nav-item-about.more {
+    font-size: 0.7rem;
+  }
+
+  .about-main-content {
+    margin-top: -60px;
+    padding: 25px 12px 30px 12px;
+  }
+
+  .who-we-are-card {
+    padding: 20px 15px;
+    gap: 12px;
+  }
+
+  .who-we-are-logo {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 10px auto;
+  }
+
+  .who-we-are-content h2 {
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+
+  .who-we-are-content p {
+    font-size: 0.9rem;
+  }
+
+  .vision-mission-section {
+    gap: 15px;
+  }
+
+  .vision-card,
+  .mission-card {
+    padding: 20px 15px;
+  }
+
+  .vision-card h3,
+  .mission-card h3 {
+    font-size: 1rem;
+  }
+
+  .vision-card p,
+  .mission-card p {
+    font-size: 0.9rem;
+  }
+
+  .vm-icon {
+    width: 45px;
+    height: 45px;
+  }
+
+  .dean-section {
+    margin: 30px auto;
+  }
+
+  .dean-card {
+    padding: 20px 15px;
+  }
+
+  .dean-image {
+    width: 70px;
+    height: 70px;
+  }
+
+  .team-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .team-member-card {
+    padding: 15px 10px;
+  }
+
+  .member-image {
+    width: 60px;
+    height: 60px;
+  }
+
+  .team-section h2 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+  }
+
+  .team-section {
+    padding: 0 15px;
+  }
+
+  .wave-svg-about {
+    height: 50px;
+  }
+
+  .curve-separator-about {
+    height: 50px;
+    margin-top: 10px;
+  }
+
+  .about-footer-logo-wrapper {
+    width: 50px;
+    height: 50px;
+    margin: 15px auto;
+  }
+
+  .about-footer-content {
+    padding: 15px 12px;
+  }
+
+  .about-footer-text,
+  .about-footer-sub {
+    font-size: 0.8rem;
+  }
+}
