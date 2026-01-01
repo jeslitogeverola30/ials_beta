@@ -97,6 +97,10 @@ const GenerativeBackground = () => {
 const App = () => {
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [currentPage, setCurrentPage] = useState('home'); // 'home', 'events', 'about', 'contact', 'signin', 'signup'
+  // eslint-disable-next-line no-unused-vars
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  // eslint-disable-next-line no-unused-vars
+  const [notification, setNotification] = useState(null);
 
   // Sample events data
   const events = [
@@ -186,6 +190,15 @@ const App = () => {
     }
   ];
 
+  const handlePaymentClick = () => {
+    if (!isAuthenticated) {
+      setNotification('You need to sign in first before you can view the payments page');
+      setCurrentPage('signin');
+      // Auto-dismiss notification after 5 seconds
+      setTimeout(() => setNotification(null), 5000);
+    }
+  };
+
   if (selectedEvent) {
     return <EventPage event={selectedEvent} onBack={() => setSelectedEvent(null)} onNavigate={(page) => {
       setSelectedEvent(null);
@@ -236,7 +249,13 @@ const App = () => {
             >
               Events
             </button>
-            <a href="#payments" className="nav-item">Payments</a>
+            <button 
+              className="nav-item"
+              onClick={handlePaymentClick}
+              style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '8px 24px' }}
+            >
+              Payments
+            </button>
             <button 
               className={`nav-item ${currentPage === 'about' ? 'active' : ''}`}
               onClick={() => setCurrentPage('about')}
@@ -448,7 +467,13 @@ const App = () => {
           >
             Events
           </button>
-          <a href="#payments" className="nav-item">Payments</a>
+          <button 
+            className="nav-item"
+            onClick={handlePaymentClick}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '8px 24px' }}
+          >
+            Payments
+          </button>
           <button 
             className={`nav-item ${currentPage === 'about' ? 'active' : ''}`}
             onClick={() => setCurrentPage('about')}

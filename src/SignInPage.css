@@ -308,6 +308,33 @@
   z-index: 20;
 }
 
+.signin-notification {
+  background: #fee;
+  border: 1px solid #fcc;
+  color: #d32f2f;
+  padding: 16px 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: 500;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(211, 47, 47, 0.1);
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .signin-form-container {
   display: flex;
   justify-content: center;
@@ -324,6 +351,19 @@
   max-width: 450px;
   position: relative;
   z-index: 10;
+}
+
+.signin-modal-logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.signin-modal-logo-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .signin-card h1 {
@@ -388,6 +428,29 @@
 
 .form-group-signin input:focus {
   outline: none;
+}
+
+.password-toggle-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-left: -35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--button-green);
+  transition: color 0.3s ease;
+  z-index: 10;
+}
+
+.password-toggle-btn:hover {
+  color: #156a20;
+}
+
+.password-toggle-btn svg {
+  width: 20px;
+  height: 20px;
 }
 
 /* REMEMBER ME & FORGOT PASSWORD */

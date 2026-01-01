@@ -62,6 +62,15 @@ const GenerativeBackground = () => {
 
 // --- ACTIVITY CARD PAGE COMPONENT ---
 const ActivityCard = ({ onBack, onNavigate }) => {
+  // eslint-disable-next-line no-unused-vars
+  const [notification, setNotification] = React.useState(null);
+
+  const handlePaymentClick = () => {
+    setNotification('You need to sign in first before you can view the payments page');
+    onNavigate('signin');
+    setTimeout(() => setNotification(null), 5000);
+  };
+
   // Sample student data
   const student = {
     name: 'Juan Dela Cruz',
@@ -123,7 +132,13 @@ const ActivityCard = ({ onBack, onNavigate }) => {
           >
             Events
           </button>
-          <a href="#payments" className="nav-item-about">Payments</a>
+          <button 
+            className="nav-item-about"
+            onClick={handlePaymentClick}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '8px 24px' }}
+          >
+            Payments
+          </button>
           <button 
             className="nav-item-about" 
             onClick={() => onNavigate('about')}
@@ -147,6 +162,12 @@ const ActivityCard = ({ onBack, onNavigate }) => {
           </button>
         </nav>
 
+        {/* Page Title Section in Header */}
+        <div className="activity-card-header-title-wrapper">
+          <h2>Activity Clearance</h2>
+          <p>Keep track of your activity participation and clearance status</p>
+        </div>
+
         <div className="curve-separator-about">
           <svg viewBox="0 0 1440 320" className="wave-svg-about" preserveAspectRatio="none">
             <path fill="#ffffff" fillOpacity="1" d="M0,192L80,186.7C160,181,320,171,480,186.7C640,203,800,245,960,245.3C1120,245,1280,203,1360,181.3L1440,160L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path>
@@ -156,84 +177,86 @@ const ActivityCard = ({ onBack, onNavigate }) => {
 
       {/* --- MAIN CONTENT --- */}
       <main className="activity-card-main-content">
+        {notification && (
+          <div className="activity-notification">
+            {notification}
+          </div>
+        )}
         <GenerativeWhiteBackground particleCount={30} />
         <div className="activity-card-wrapper">
-          {/* Card Container with Header and Student */}
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
-            {/* Card Header */}
-            <div className="activity-card-header-section">
-              <div className="activity-card-header-left">
-                <div className="activity-card-logo-org">
-                  <img src={logo} alt="IALS-MS" className="activity-card-logo-org-img" />
-                </div>
-                <div className="activity-card-header-text">
-                  <h3>ACTIVITY CLEARANCE CARD</h3>
-                  <p>{semester} • {academicYear}</p>
-                </div>
+          {/* Header */}
+          <div className="activity-card-header-new">
+            <div className="activity-card-header-logo-section">
+              <div className="activity-card-logo-org-new">
+                <img src={logo} alt="IALS-MS" className="activity-card-logo-org-img-new" />
+              </div>
+              <div className="activity-card-logo-text">
+                <div className="activity-card-org-name">IALS-MS</div>
+                <div className="activity-card-org-subtitle">Organization</div>
+              </div>
+            </div>
+            <div className="activity-card-header-title-section">
+              <h1>ACTIVITY CLEARANCE CARD</h1>
+              <p>{semester} • {academicYear}</p>
+            </div>
+          </div>
+
+          {/* Content Section - Vertical Layout */}
+          <div className="activity-card-content-new">
+            {/* Profile Section */}
+            <div className="activity-card-profile-section">
+              <img src={student.photo} alt={student.name} className="activity-card-profile-pic" />
+              <div className="activity-card-user-details">
+                <h2>{student.name}</h2>
+                <p>{student.program} - {student.year}</p>
+                <p className="activity-card-id-num">{student.id}</p>
               </div>
             </div>
 
-            {/* Student Info and Activities Container */}
-            <div style={{ display: 'flex', gap: '0', width: '100%', minHeight: '400px' }}>
-              {/* Student Info - Left Side */}
-              <div className="activity-card-student-section" style={{ flex: '0 0 auto', borderRight: '2px solid #e0d5c5', paddingRight: '30px' }}>
-                <div className="activity-card-student-info" style={{ flexDirection: 'column' }}>
-                  <img src={student.photo} alt={student.name} className="activity-card-student-photo" />
-                  <div className="activity-card-student-details">
-                    <h2>{student.name}</h2>
-                    <p>{student.program} - {student.year}</p>
-                    <p className="activity-card-student-id">{student.id}</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Activities and Status - Right Side */}
-              <div style={{ flex: '1', display: 'flex', flexDirection: 'column', position: 'relative' }}>
-                {/* Activities Grid */}
-                <div className="activity-card-activities-section">
-                  <div className="activity-card-activities-grid">
-                    {activities.map((activity, index) => (
-                      <div key={index} className="activity-card-activity-item">
-                        <div className="activity-card-calendar-icon">
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                            <line x1="16" y1="2" x2="16" y2="6"></line>
-                            <line x1="8" y1="2" x2="8" y2="6"></line>
-                            <line x1="3" y1="10" x2="21" y2="10"></line>
-                          </svg>
-                        </div>
-                        <p>{activity.name}</p>
-                        {activity.cleared && (
-                          <div className="activity-card-cleared-stamp">
-                            <svg viewBox="0 0 100 100" className="activity-card-stamp">
-                              <circle cx="50" cy="50" r="48" fill="none" stroke="#2a8a3d" strokeWidth="3"/>
-                              <circle cx="50" cy="50" r="45" fill="none" stroke="#2a8a3d" strokeWidth="2" strokeDasharray="5,3"/>
-                              <text x="50" y="55" textAnchor="middle" fontSize="20" fontWeight="bold" fill="#2a8a3d">CLEARED</text>
-                            </svg>
-                          </div>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Overall Clearance Status */}
-                <div className="activity-card-status-section">
-                  <div className="activity-card-status-badge">
-                    <svg viewBox="0 0 100 100" className="activity-card-status-stamp">
-                      <circle cx="50" cy="50" r="48" fill="none" stroke="#2a8a3d" strokeWidth="3"/>
-                      <circle cx="50" cy="50" r="45" fill="none" stroke="#2a8a3d" strokeWidth="2" strokeDasharray="5,3"/>
-                      <text x="50" y="40" textAnchor="middle" fontSize="18" fontWeight="bold" fill="#2a8a3d">OFFICIALLY</text>
-                      <text x="50" y="62" textAnchor="middle" fontSize="18" fontWeight="bold" fill="#2a8a3d">CLEARED</text>
-                    </svg>
-                    <div className="activity-card-check-mark">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-                        <polyline points="20 6 9 17 4 12"></polyline>
+            {/* Grid Section Below Profile */}
+            <div className="activity-card-grid-section">
+              {activities.map((activity, index) => (
+                <div key={index} className="activity-card-grid-item">
+                  <div className="activity-card-circle-slot">
+                    {!activity.cleared && (
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                        <line x1="3" y1="10" x2="21" y2="10"></line>
                       </svg>
-                    </div>
+                    )}
                   </div>
+                  {activity.cleared && (
+                    <div className="activity-card-stamp-cleared">
+                      <div className="activity-card-stamp-text-inner">
+                        CLEARED
+                      </div>
+                    </div>
+                  )}
+                  <div className="activity-card-label">{activity.name}</div>
                 </div>
+              ))}
+            </div>
+
+            {/* Big Stamp Overlay */}
+            <div className="activity-card-big-stamp-overlay">
+              <div className="activity-card-big-stamp-inner">
+                <div style={{fontSize: '11px', position: 'absolute', top: '12px'}}>IALS-MS</div>
+                CLEARED
+                <div style={{fontSize: '11px', position: 'absolute', bottom: '12px'}}>IALS-MS</div>
               </div>
+            </div>
+          </div>
+
+          {/* Status Badge */}
+          <div className="activity-card-status-badge-new">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" width="20" height="20">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <div>
+              <div className="activity-card-badge-officially">OFFICIALLY</div>
+              <div className="activity-card-badge-cleared">CLEARED</div>
             </div>
           </div>
         </div>

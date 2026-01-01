@@ -70,6 +70,15 @@ const GenerativeBackground = () => {
 
 // --- ABOUT PAGE COMPONENT ---
 const AboutPage = ({ onBack, onNavigate }) => {
+  // eslint-disable-next-line no-unused-vars
+  const [notification, setNotification] = React.useState(null);
+
+  const handlePaymentClick = () => {
+    setNotification('You need to sign in first before you can view the payments page');
+    onNavigate('signin');
+    setTimeout(() => setNotification(null), 5000);
+  };
+
   // Team members data
   const deanInfo = {
     name: 'Dr. Elena Cruz',
@@ -190,7 +199,13 @@ const AboutPage = ({ onBack, onNavigate }) => {
           >
             Events
           </button>
-          <a href="#payments" className="nav-item-about">Payments</a>
+          <button 
+            className="nav-item-about"
+            onClick={handlePaymentClick}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '8px 24px' }}
+          >
+            Payments
+          </button>
           <button 
             className="nav-item-about active"
             onClick={() => onNavigate('about')}
@@ -223,6 +238,11 @@ const AboutPage = ({ onBack, onNavigate }) => {
 
       {/* --- ABOUT CONTENT SECTION --- */}
       <main className="about-main-content">
+        {notification && (
+          <div className="about-notification">
+            {notification}
+          </div>
+        )}
         <GenerativeWhiteBackground particleCount={30} />
         {/* WHO WE ARE SECTION */}
         <div className="who-we-are-section">

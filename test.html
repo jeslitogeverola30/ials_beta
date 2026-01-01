@@ -1,351 +1,328 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity Clearance Card</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
 
-<html class="light" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Faculty Portal Home Page</title>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#1e8549",
-                        "primary-light": "#2ECC71",
-                        "background-light": "#f6f8f7",
-                        "background-dark": "#131f18",
-                        "surface-green": "#f0fdf4", // Lighter version of D5F5E3 for web readability
-                        "surface-green-dark": "#14532d",
-                    },
-                    fontFamily: {
-                        "display": ["Inter", "sans-serif"],
-                        "body": ["Inter", "sans-serif"],
-                    },
-                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
-                },
-            },
-        }
-    </script>
-<style>
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
         }
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+
+        /* Main Card Container */
+        .card {
+            width: 800px;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            overflow: hidden;
+            position: relative;
+            background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
+            background-size: 20px 20px; /* Simulating the circuit pattern */
         }
+
+        /* Header Section */
+        .header {
+            background: linear-gradient(90deg, #0f4d22 0%, #1a5d2e 100%);
+            color: white;
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 4px solid #84cc16; /* The light green line */
+        }
+
+        .header-logo {
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .header-logo i {
+            font-size: 24px;
+            margin-right: 10px;
+            color: #84cc16;
+        }
+
+        .header-title {
+            text-align: right;
+        }
+
+        .header-title h1 {
+            margin: 0;
+            font-size: 24px;
+            text-transform: uppercase;
+            font-weight: 900;
+        }
+
+        .header-title p {
+            margin: 0;
+            font-size: 14px;
+            opacity: 0.8;
+            font-weight: 300;
+        }
+
+        /* Content Area */
+        .content {
+            padding: 25px;
+            display: flex;
+            position: relative;
+        }
+
+        /* Left Side: Profile */
+        .profile-section {
+            display: flex;
+            align-items: flex-start;
+            width: 40%;
+        }
+
+        .profile-pic {
+            width: 100px;
+            height: 100px;
+            background-color: #ddd;
+            border-radius: 10px;
+            margin-right: 15px;
+            object-fit: cover;
+        }
+
+        .user-details h2 {
+            margin: 0;
+            color: #333;
+            font-size: 22px;
+        }
+
+        .user-details p {
+            margin: 5px 0;
+            color: #666;
+            font-size: 16px;
+        }
+
+        .id-num {
+            font-weight: bold;
+            color: #444;
+        }
+
+        /* Right Side: Grid */
+        .grid-section {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            width: 60%;
+            margin-top: 20px;
+        }
+
+        .grid-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .circle-slot {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 2px dashed #ccc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 8px;
+            color: #ccc;
+            font-size: 24px;
+        }
+
+        .label {
+            font-size: 10px;
+            color: #555;
+            max-width: 70px;
+        }
+
+        /* The Stamp Effect */
+        .stamp-cleared {
+            border: 3px solid #1a5d2e;
+            color: #1a5d2e;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 10px;
+            transform: rotate(-10deg);
+            background: rgba(255,255,255,0.9);
+            position: absolute;
+            top: 0;
+            box-shadow: 0 0 0 2px #fff inset; /* Double border effect */
+        }
+        
+        .stamp-text-inner {
+            border: 1px solid #1a5d2e;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Big Overlay Stamp */
+        .big-stamp-overlay {
+            position: absolute;
+            right: 40px;
+            top: 80px;
+            width: 140px;
+            height: 140px;
+            border: 5px solid #1a5d2e;
+            border-radius: 50%;
+            color: #1a5d2e;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            font-weight: 900;
+            transform: rotate(-15deg);
+            opacity: 0.8;
+            pointer-events: none; /* Let clicks pass through */
+            z-index: 10;
+        }
+        
+        .big-stamp-inner {
+            width: 120px;
+            height: 120px;
+            border: 2px solid #1a5d2e;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* Footer Status Badge */
+        .status-badge {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(90deg, #4ade80 0%, #1a5d2e 100%);
+            color: white;
+            padding: 10px 30px;
+            border-top-left-radius: 30px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            box-shadow: -2px -2px 10px rgba(0,0,0,0.1);
+        }
+
+        .status-badge i {
+            margin-right: 8px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 50%;
+            padding: 4px;
+        }
+
     </style>
 </head>
-<body class="bg-background-light dark:bg-background-dark text-[#121714] dark:text-gray-100 flex flex-col min-h-screen overflow-x-hidden">
-<!-- Top Navigation Bar -->
-<header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-[#e1e5ea] dark:border-gray-800 bg-white dark:bg-[#1a2e22] px-10 py-3 shadow-sm">
-<div class="flex items-center gap-4 text-[#121714] dark:text-white">
-<div class="size-8 flex items-center justify-center text-primary">
-<span class="material-symbols-outlined text-[32px]">school</span>
-</div>
-<div class="flex flex-col">
-<h2 class="text-[#121714] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">Faculty of Science</h2>
-<span class="text-xs font-medium text-gray-500 dark:text-gray-400">State University</span>
-</div>
-</div>
-<div class="flex flex-1 justify-end gap-8 items-center">
-<nav class="hidden lg:flex items-center gap-8">
-<a class="text-[#121714] dark:text-gray-200 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Home</a>
-<a class="text-[#121714] dark:text-gray-200 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Announcements</a>
-<a class="text-[#121714] dark:text-gray-200 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Events</a>
-<a class="text-[#121714] dark:text-gray-200 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Activities</a>
-<a class="text-[#121714] dark:text-gray-200 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">About</a>
-</nav>
-<div class="flex gap-3">
-<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-4 bg-transparent border border-[#e1e5ea] dark:border-gray-600 text-[#121714] dark:text-white text-sm font-bold leading-normal hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
-<span class="truncate">Sign In</span>
-</button>
-<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-4 bg-primary text-white text-sm font-bold leading-normal hover:bg-[#166e3a] transition-colors shadow-sm">
-<span class="truncate">Sign Up</span>
-</button>
-</div>
-</div>
-</header>
-<main class="flex-grow flex flex-col">
-<!-- Hero Section -->
-<section class="bg-white dark:bg-background-dark py-12 lg:py-16 px-6 lg:px-40 flex justify-center border-b border-gray-100 dark:border-gray-800">
-<div class="max-w-[960px] w-full flex flex-col gap-4 text-center items-center">
-<div class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-semibold w-fit mb-2">Academic Year 2023-2024</div>
-<h1 class="text-[#121714] dark:text-white text-4xl lg:text-5xl font-black leading-tight tracking-[-0.033em]">
-                    Welcome to the Faculty Portal
-                </h1>
-<p class="text-[#668573] dark:text-gray-300 text-lg font-normal leading-relaxed max-w-2xl">
-                    Your central hub for academic resources, news, and faculty updates. Access your courses, check schedules, and stay connected with the academic community.
-                </p>
-<div class="mt-4 flex gap-3">
-<button class="bg-primary text-white font-medium py-2 px-6 rounded-lg hover:bg-[#166e3a] transition-colors">Student Resources</button>
-<button class="bg-white border border-gray-300 text-gray-700 font-medium py-2 px-6 rounded-lg hover:bg-gray-50 dark:bg-transparent dark:text-white dark:border-gray-600 dark:hover:bg-gray-800 transition-colors">Faculty Directory</button>
-</div>
-</div>
-</section>
-<!-- Latest Announcements Section -->
-<!-- Muted green background as requested (using a very light green tint for better accessibility than pure D5F5E3) -->
-<section class="bg-[#f0fdf4] dark:bg-[#14291f] py-12 px-6 lg:px-40 flex justify-center">
-<div class="max-w-[960px] w-full flex flex-col">
-<div class="flex items-center justify-between mb-6">
-<h2 class="text-[#121714] dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em] flex items-center gap-2">
-<span class="material-symbols-outlined text-primary">campaign</span>
-                        Latest Announcements
-                    </h2>
-<a class="text-primary text-sm font-bold hover:underline" href="#">View All</a>
-</div>
-<div class="flex flex-col gap-4">
-<!-- Announcement 1 -->
-<div class="group flex flex-col sm:flex-row gap-4 bg-white dark:bg-[#1e3328] px-5 py-4 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700 border-l-[6px] border-l-primary hover:shadow-md transition-shadow">
-<div class="flex flex-1 flex-col justify-center">
-<div class="flex items-center gap-2 mb-1">
-<span class="text-xs font-bold text-primary uppercase tracking-wide">Registration</span>
-<span class="text-xs text-gray-400">•</span>
-<span class="text-xs text-gray-500 dark:text-gray-400">October 24, 2023</span>
-</div>
-<h3 class="text-[#121714] dark:text-white text-lg font-bold leading-normal mb-1 group-hover:text-primary transition-colors">Fall Semester Registration Open</h3>
-<p class="text-[#668573] dark:text-gray-300 text-sm font-normal leading-normal">
-                                Registration opens for all returning undergraduate students. Please check your assigned time slot in the student portal before attempting to register for courses.
-                            </p>
-</div>
-<div class="shrink-0 flex items-center">
-<button class="text-primary text-sm font-bold leading-normal flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                                Read more <span class="material-symbols-outlined text-lg">arrow_forward</span>
-</button>
-</div>
-</div>
-<!-- Announcement 2 -->
-<div class="group flex flex-col sm:flex-row gap-4 bg-white dark:bg-[#1e3328] px-5 py-4 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700 border-l-[6px] border-l-primary hover:shadow-md transition-shadow">
-<div class="flex flex-1 flex-col justify-center">
-<div class="flex items-center gap-2 mb-1">
-<span class="text-xs font-bold text-amber-600 uppercase tracking-wide">Alert</span>
-<span class="text-xs text-gray-400">•</span>
-<span class="text-xs text-gray-500 dark:text-gray-400">October 22, 2023</span>
-</div>
-<h3 class="text-[#121714] dark:text-white text-lg font-bold leading-normal mb-1 group-hover:text-primary transition-colors">Campus Maintenance Schedule</h3>
-<p class="text-[#668573] dark:text-gray-300 text-sm font-normal leading-normal">
-                                Scheduled power outage in the Science Block from 2 PM to 4 PM. All labs will be closed during this period. Please save your work appropriately.
-                            </p>
-</div>
-<div class="shrink-0 flex items-center">
-<button class="text-primary text-sm font-bold leading-normal flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                                Read more <span class="material-symbols-outlined text-lg">arrow_forward</span>
-</button>
-</div>
-</div>
-<!-- Announcement 3 -->
-<div class="group flex flex-col sm:flex-row gap-4 bg-white dark:bg-[#1e3328] px-5 py-4 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700 border-l-[6px] border-l-primary hover:shadow-md transition-shadow">
-<div class="flex flex-1 flex-col justify-center">
-<div class="flex items-center gap-2 mb-1">
-<span class="text-xs font-bold text-blue-600 uppercase tracking-wide">Event</span>
-<span class="text-xs text-gray-400">•</span>
-<span class="text-xs text-gray-500 dark:text-gray-400">October 20, 2023</span>
-</div>
-<h3 class="text-[#121714] dark:text-white text-lg font-bold leading-normal mb-1 group-hover:text-primary transition-colors">Guest Lecture Series: Dr. Smith</h3>
-<p class="text-[#668573] dark:text-gray-300 text-sm font-normal leading-normal">
-                                Join us for an insightful session on Quantum Computing advancements with visiting professor Dr. Alan Smith in the Main Auditorium.
-                            </p>
-</div>
-<div class="shrink-0 flex items-center">
-<button class="text-primary text-sm font-bold leading-normal flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                                Read more <span class="material-symbols-outlined text-lg">arrow_forward</span>
-</button>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Upcoming Events Section -->
-<section class="bg-white dark:bg-background-dark py-12 px-6 lg:px-40 flex justify-center">
-<div class="max-w-[960px] w-full flex flex-col">
-<div class="flex items-center justify-between mb-6">
-<h2 class="text-[#121714] dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em] flex items-center gap-2">
-<span class="material-symbols-outlined text-primary">calendar_month</span>
-                        Upcoming Events
-                    </h2>
-<a class="text-primary text-sm font-bold hover:underline" href="#">Full Calendar</a>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-<!-- Event Card 1 -->
-<div class="flex flex-col rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden bg-white dark:bg-[#1a2e22] hover:border-primary/50 transition-colors">
-<div class="p-5 flex flex-col h-full">
-<div class="flex justify-between items-start mb-4">
-<span class="bg-primary/10 text-primary-light text-xs font-bold px-2 py-1 rounded-full border border-primary/20">Upcoming</span>
-<span class="text-gray-400 dark:text-gray-500 text-sm font-medium flex items-center gap-1">
-<span class="material-symbols-outlined text-sm">schedule</span> 2:00 PM
-                                </span>
-</div>
-<h3 class="text-[#121714] dark:text-white text-lg font-bold mb-2">Department Seminar</h3>
-<div class="mt-auto space-y-2">
-<div class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
-<span class="material-symbols-outlined text-gray-400 text-lg">event</span>
-<span>Nov 12, 2023</span>
-</div>
-<div class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
-<span class="material-symbols-outlined text-gray-400 text-lg">location_on</span>
-<span>Room 304, Science Block</span>
-</div>
-</div>
-</div>
-</div>
-<!-- Event Card 2 -->
-<div class="flex flex-col rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden bg-white dark:bg-[#1a2e22] hover:border-primary/50 transition-colors">
-<div class="p-5 flex flex-col h-full">
-<div class="flex justify-between items-start mb-4">
-<span class="bg-primary/10 text-primary-light text-xs font-bold px-2 py-1 rounded-full border border-primary/20">Upcoming</span>
-<span class="text-gray-400 dark:text-gray-500 text-sm font-medium flex items-center gap-1">
-<span class="material-symbols-outlined text-sm">schedule</span> 10:00 AM
-                                </span>
-</div>
-<h3 class="text-[#121714] dark:text-white text-lg font-bold mb-2">Thesis Defense: J. Doe</h3>
-<div class="mt-auto space-y-2">
-<div class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
-<span class="material-symbols-outlined text-gray-400 text-lg">event</span>
-<span>Nov 15, 2023</span>
-</div>
-<div class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
-<span class="material-symbols-outlined text-gray-400 text-lg">location_on</span>
-<span>Conference Hall A</span>
-</div>
-</div>
-</div>
-</div>
-<!-- Event Card 3 -->
-<div class="flex flex-col rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden bg-white dark:bg-[#1a2e22] hover:border-primary/50 transition-colors">
-<div class="p-5 flex flex-col h-full">
-<div class="flex justify-between items-start mb-4">
-<span class="bg-primary/10 text-primary-light text-xs font-bold px-2 py-1 rounded-full border border-primary/20">Upcoming</span>
-<span class="text-gray-400 dark:text-gray-500 text-sm font-medium flex items-center gap-1">
-<span class="material-symbols-outlined text-sm">schedule</span> 9:00 AM
-                                </span>
-</div>
-<h3 class="text-[#121714] dark:text-white text-lg font-bold mb-2">Science Fair 2023</h3>
-<div class="mt-auto space-y-2">
-<div class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
-<span class="material-symbols-outlined text-gray-400 text-lg">event</span>
-<span>Nov 20, 2023</span>
-</div>
-<div class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
-<span class="material-symbols-outlined text-gray-400 text-lg">location_on</span>
-<span>University Quadrangle</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Faculty Activities Section -->
-<section class="bg-white dark:bg-background-dark py-12 px-6 lg:px-40 flex justify-center border-t border-gray-100 dark:border-gray-800">
-<div class="max-w-[960px] w-full flex flex-col">
-<div class="flex items-center justify-between mb-8">
-<h2 class="text-[#121714] dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em] flex items-center gap-2">
-<span class="material-symbols-outlined text-primary">local_activity</span>
-                        Faculty Activities
-                    </h2>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-<!-- Activity Card 1 -->
-<div class="flex flex-col rounded-xl overflow-hidden shadow-md border border-gray-100 dark:border-gray-700 h-full">
-<div class="h-48 w-full bg-gray-200 dark:bg-gray-700 relative overflow-hidden" data-alt="Abstract image representing research and data analysis with geometric patterns in green and white">
-<div class="absolute inset-0 bg-gradient-to-r from-primary/80 to-[#2ECC71]/80"></div>
-<div class="absolute inset-0 flex items-center justify-center">
-<span class="material-symbols-outlined text-white text-6xl opacity-30">science</span>
-</div>
-</div>
-<div class="p-6 bg-white dark:bg-[#1a2e22] flex-1 flex flex-col">
-<div class="flex justify-between items-center mb-2">
-<span class="text-xs font-bold text-gray-500 uppercase tracking-wider">Research</span>
-<span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded font-medium">Submissions Open</span>
-</div>
-<h3 class="text-xl font-bold text-[#121714] dark:text-white mb-2">Annual Research Symposium</h3>
-<p class="text-gray-600 dark:text-gray-300 text-sm mb-4 line-clamp-3">
-                                The faculty invites abstract submissions for the 2023 Annual Research Symposium. This is a premier platform for staff and students to showcase their scientific discoveries.
-                            </p>
-<button class="mt-auto text-primary font-bold text-sm hover:underline self-start">Learn More</button>
-</div>
-</div>
-<!-- Activity Card 2 -->
-<div class="flex flex-col rounded-xl overflow-hidden shadow-md border border-gray-100 dark:border-gray-700 h-full">
-<div class="h-48 w-full bg-gray-200 dark:bg-gray-700 relative overflow-hidden" data-alt="Image showing community engagement concept with connected hands abstract art">
-<div class="absolute inset-0 bg-gradient-to-r from-[#14532d] to-primary"></div>
-<div class="absolute inset-0 flex items-center justify-center">
-<span class="material-symbols-outlined text-white text-6xl opacity-30">diversity_3</span>
-</div>
-</div>
-<div class="p-6 bg-white dark:bg-[#1a2e22] flex-1 flex flex-col">
-<div class="flex justify-between items-center mb-2">
-<span class="text-xs font-bold text-gray-500 uppercase tracking-wider">Outreach</span>
-<span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded font-medium">Volunteers Needed</span>
-</div>
-<h3 class="text-xl font-bold text-[#121714] dark:text-white mb-2">Science Community Outreach</h3>
-<p class="text-gray-600 dark:text-gray-300 text-sm mb-4 line-clamp-3">
-                                Join our team of volunteers to bring science education to local high schools. Earn credit and make a difference in the community through mentorship.
-                            </p>
-<button class="mt-auto text-primary font-bold text-sm hover:underline self-start">Sign Up</button>
-</div>
-</div>
-</div>
-</div>
-</section>
-</main>
-<!-- Footer -->
-<footer class="bg-[#e8f5e9] dark:bg-[#0f2115] pt-16 pb-8 px-6 lg:px-40 text-[#121714] dark:text-gray-300">
-<div class="max-w-[960px] mx-auto w-full">
-<div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-<div class="md:col-span-2 space-y-4">
-<div class="flex items-center gap-2 text-primary dark:text-primary-light">
-<span class="material-symbols-outlined text-[24px]">school</span>
-<span class="font-bold text-lg">Faculty of Science</span>
-</div>
-<p class="text-sm leading-relaxed text-gray-600 dark:text-gray-400 max-w-sm">
-                        Dedicated to excellence in teaching, learning, and research, and to developing leaders in many disciplines who make a difference globally.
-                    </p>
-<div class="flex gap-4 mt-4">
-<a class="text-gray-500 hover:text-primary transition-colors" href="#"><span class="sr-only">Facebook</span><svg class="h-5 w-5" fill="currentColor" viewbox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"></path></svg></a>
-<a class="text-gray-500 hover:text-primary transition-colors" href="#"><span class="sr-only">Twitter</span><svg class="h-5 w-5" fill="currentColor" viewbox="0 0 24 24"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path></svg></a>
-</div>
-</div>
-<div class="space-y-4">
-<h4 class="font-bold text-[#121714] dark:text-white">Quick Links</h4>
-<ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
-<li><a class="hover:text-primary transition-colors" href="#">Home</a></li>
-<li><a class="hover:text-primary transition-colors" href="#">Announcements</a></li>
-<li><a class="hover:text-primary transition-colors" href="#">Events Calendar</a></li>
-<li><a class="hover:text-primary transition-colors" href="#">About the Faculty</a></li>
-</ul>
-</div>
-<div class="space-y-4">
-<h4 class="font-bold text-[#121714] dark:text-white">Contact Us</h4>
-<ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
-<li class="flex items-start gap-2">
-<span class="material-symbols-outlined text-sm mt-0.5">location_on</span>
-<span>Science Building, Room 101<br/>123 University Ave<br/>City, State 12345</span>
-</li>
-<li class="flex items-center gap-2">
-<span class="material-symbols-outlined text-sm">call</span>
-<span>(555) 123-4567</span>
-</li>
-<li class="flex items-center gap-2">
-<span class="material-symbols-outlined text-sm">mail</span>
-<a class="hover:text-primary" href="mailto:info@faculty.edu">info@faculty.edu</a>
-</li>
-</ul>
-</div>
-</div>
-<div class="pt-8 border-t border-gray-200 dark:border-gray-700 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
-<p>© 2023 Faculty of Science, State University. All rights reserved.</p>
-<div class="flex gap-6 mt-4 md:mt-0">
-<a class="hover:text-primary" href="#">Privacy Policy</a>
-<a class="hover:text-primary" href="#">Terms of Use</a>
-<a class="hover:text-primary" href="#">Accessibility</a>
-</div>
-</div>
-</div>
-</footer>
-</body></html>
+<body>
+
+    <div class="card">
+        <div class="header">
+            <div class="header-logo">
+                <i class="fas fa-seedling"></i>
+                <div>
+                    <div>IALS-MS</div>
+                    <div style="font-size: 0.8em; font-weight: normal;">Organization</div>
+                </div>
+            </div>
+            <div class="header-title">
+                <h1>Activity Clearance Card</h1>
+                <p>Semester 1 • A.Y. 2025-2026</p>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="profile-section">
+                <img src="https://ui-avatars.com/api/?name=Juan+Dela+Cruz&background=random&size=128" alt="Profile" class="profile-pic">
+                <div class="user-details">
+                    <h2>Juan Dela Cruz</h2>
+                    <p>BS Biology - Year 3</p>
+                    <p class="id-num">2023-00123</p>
+                </div>
+            </div>
+
+            <div class="grid-section">
+                
+                <div class="grid-item">
+                    <div class="circle-slot"><i class="far fa-calendar-alt"></i></div>
+                    <div class="label">General Assembly</div>
+                </div>
+
+                <div class="grid-item">
+                    <div class="circle-slot"><i class="far fa-calendar-check"></i></div>
+                    <div class="label">Dept. Orientation</div>
+                </div>
+
+                <div class="grid-item">
+                    <div class="circle-slot"><i class="far fa-comments"></i></div>
+                    <div class="label">Midterm Forum</div>
+                </div>
+
+                <div class="grid-item">
+                    <div class="circle-slot"></div> <div class="stamp-cleared"><div class="stamp-text-inner">CLEARED</div></div>
+                    <div class="label">Research Symposium</div>
+                </div>
+
+                <div class="grid-item">
+                    <div class="circle-slot"><i class="far fa-comments"></i></div>
+                    <div class="label">Midterm Forum</div>
+                </div>
+
+                <div class="grid-item">
+                    <div class="circle-slot"><i class="fas fa-users"></i></div>
+                    <div class="label">Leadership Seminar</div>
+                </div>
+
+                <div class="grid-item">
+                    <div class="circle-slot"></div>
+                    <div class="stamp-cleared"><div class="stamp-text-inner">CLEARED</div></div>
+                    <div class="label">Sports Fest</div>
+                </div>
+
+                <div class="grid-item">
+                    <div class="circle-slot"></div>
+                    <div class="stamp-cleared"><div class="stamp-text-inner">CLEARED</div></div>
+                    <div class="label">Year-End Party</div>
+                </div>
+            </div>
+
+            <div class="big-stamp-overlay">
+                <div class="big-stamp-inner">
+                    <div style="font-size:12px; position: absolute; top: 15px;">IALS-MS</div>
+                    CLEARED
+                    <div style="font-size:12px; position: absolute; bottom: 15px;">IALS-MS</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="status-badge">
+            <i class="fas fa-check"></i>
+            <div>
+                <div style="font-size: 0.8rem; line-height:1;">OFFICIALLY</div>
+                <div style="font-size: 1.1rem; line-height:1;">CLEARED</div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

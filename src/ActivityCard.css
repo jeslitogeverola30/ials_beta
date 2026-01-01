@@ -3,7 +3,7 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: #f8f8f8;
+  background-color: #f0f2f5;
   font-family: 'Poppins', sans-serif;
 }
 
@@ -244,14 +244,61 @@
   position: relative;
 }
 
+/* PAGE TITLE SECTION */
+.activity-card-page-title-section {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #333;
+}
+
+.activity-card-page-title-section h1 {
+  font-size: 42px;
+  font-weight: 900;
+  color: #1e5c25;
+  margin: 0 0 10px 0;
+  letter-spacing: -0.5px;
+}
+
+.activity-card-page-title-section p {
+  font-size: 18px;
+  color: #666;
+  margin: 0;
+  font-weight: 400;
+}
+
+/* HEADER TITLE WRAPPER */
+.activity-card-header-title-wrapper {
+  text-align: center;
+  padding: 60px 20px 40px 20px;
+  color: white;
+  position: relative;
+  z-index: 15;
+}
+
+.activity-card-header-title-wrapper h2 {
+  font-size: 36px;
+  font-weight: 900;
+  margin: 0 0 10px 0;
+  letter-spacing: -0.5px;
+}
+
+.activity-card-header-title-wrapper p {
+  font-size: 16px;
+  margin: 0;
+  font-weight: 400;
+  opacity: 0.95;
+}
+
 .activity-card-wrapper {
-  max-width: 1000px;
+  width: 900px;
   margin: 0 auto;
-  background-color: #ffffff;
-  border-radius: 20px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
   overflow: hidden;
   position: relative;
+  background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
+  background-size: 20px 20px;
 }
 
 /* Card Header Section */
@@ -306,6 +353,281 @@
   font-size: 13px;
   opacity: 0.9;
   margin: 0;
+}
+
+/* NEW HEADER DESIGN */
+.activity-card-header-new {
+  background: linear-gradient(90deg, #0f4d22 0%, #1a5d2e 100%);
+  color: white;
+  padding: 15px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 4px solid #84cc16;
+}
+
+.activity-card-header-logo-section {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  font-weight: bold;
+  gap: 12px;
+}
+
+.activity-card-logo-org-new {
+  width: 45px;
+  height: 45px;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  flex-shrink: 0;
+}
+
+.activity-card-logo-org-img-new {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.activity-card-logo-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.activity-card-org-name {
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.activity-card-org-subtitle {
+  font-size: 11px;
+  font-weight: normal;
+  opacity: 0.9;
+}
+
+.activity-card-header-title-section {
+  text-align: right;
+}
+
+.activity-card-header-title-section h1 {
+  margin: 0;
+  font-size: 32px;
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: 1px;
+  color: white;
+}
+
+.activity-card-header-title-section p {
+  margin: 0;
+  font-size: 16px;
+  opacity: 0.8;
+  font-weight: 300;
+  color: white;
+}
+
+/* NEW CONTENT SECTION */
+.activity-card-content-new {
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  gap: 25px;
+}
+
+/* NEW PROFILE SECTION */
+.activity-card-profile-section {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  padding-right: 0;
+  border-right: none;
+}
+
+.activity-card-profile-pic {
+  width: 100px;
+  height: 100px;
+  background-color: #ddd;
+  border-radius: 10px;
+  margin-right: 15px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.activity-card-user-details h2 {
+  margin: 0;
+  color: #333;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.activity-card-user-details p {
+  margin: 5px 0;
+  color: #666;
+  font-size: 14px;
+}
+
+.activity-card-id-num {
+  font-weight: bold;
+  color: #444;
+  font-size: 12px !important;
+}
+
+/* NEW GRID SECTION */
+.activity-card-grid-section {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  width: 100%;
+  padding-left: 0;
+  align-content: start;
+  padding-right: 150px;
+}
+
+.activity-card-grid-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.activity-card-circle-slot {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px dashed #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 8px;
+  color: #ccc;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.activity-card-circle-slot svg {
+  width: 28px;
+  height: 28px;
+  stroke: #ccc;
+}
+
+.activity-card-label {
+  font-size: 11px;
+  color: #555;
+  max-width: 70px;
+  line-height: 1.3;
+}
+
+/* NEW STAMP EFFECT */
+.activity-card-stamp-cleared {
+  border: 3px solid #1a5d2e;
+  color: #1a5d2e;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 10px;
+  transform: rotate(-10deg);
+  background: rgba(255, 255, 255, 0.9);
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-10deg);
+  box-shadow: 0 0 0 2px #fff inset;
+  z-index: 1;
+}
+
+.activity-card-stamp-text-inner {
+  border: 1px solid #1a5d2e;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 9px;
+}
+
+/* NEW BIG STAMP OVERLAY */
+.activity-card-big-stamp-overlay {
+  position: absolute;
+  right: 30px;
+  top: 60px;
+  width: 140px;
+  height: 140px;
+  border: 5px solid #1a5d2e;
+  border-radius: 50%;
+  color: #1a5d2e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-weight: 900;
+  transform: rotate(-15deg);
+  opacity: 0.8;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.activity-card-big-stamp-inner {
+  width: 120px;
+  height: 120px;
+  border: 2px solid #1a5d2e;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 900;
+  position: relative;
+}
+
+/* NEW STATUS BADGE */
+.activity-card-status-badge-new {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(90deg, #4ade80 0%, #1a5d2e 100%);
+  color: white;
+  padding: 12px 30px;
+  border-top-left-radius: 30px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: -2px -2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 20;
+}
+
+.activity-card-status-badge-new svg {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  padding: 6px;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+}
+
+.activity-card-badge-officially {
+  font-size: 0.75rem;
+  line-height: 1;
+  letter-spacing: 0.5px;
+}
+
+.activity-card-badge-cleared {
+  font-size: 1.1rem;
+  line-height: 1;
+  letter-spacing: 0.5px;
 }
 
 /* Student Info Section */

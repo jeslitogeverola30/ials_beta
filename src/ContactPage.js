@@ -78,6 +78,15 @@ const GenerativeBackground = () => {
 
 // --- CONTACT PAGE COMPONENT ---
 const ContactPage = ({ onBack, onNavigate }) => {
+  // eslint-disable-next-line no-unused-vars
+  const [notification, setNotification] = React.useState(null);
+
+  const handlePaymentClick = () => {
+    setNotification('You need to sign in first before you can view the payments page');
+    onNavigate('signin');
+    setTimeout(() => setNotification(null), 5000);
+  };
+
   const contactInfo = {
     phone: '0951 416 3458',
     email: 'ialsinstitute22@gmail.com',
@@ -131,7 +140,13 @@ const ContactPage = ({ onBack, onNavigate }) => {
           >
             Events
           </button>
-          <a href="#payments" className="nav-item-contact">Payments</a>
+          <button 
+            className="nav-item-contact"
+            onClick={handlePaymentClick}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '8px 24px' }}
+          >
+            Payments
+          </button>
           <button 
             className="nav-item-contact" 
             onClick={() => onNavigate('about')}
@@ -164,6 +179,11 @@ const ContactPage = ({ onBack, onNavigate }) => {
 
       {/* --- CONTACT CONTENT SECTION --- */}
       <main className="contact-main-content">
+        {notification && (
+          <div className="contact-notification">
+            {notification}
+          </div>
+        )}
         <GenerativeWhiteBackground particleCount={30} />
         <div className="contact-wrapper">
           <h1>Get In Touch</h1>

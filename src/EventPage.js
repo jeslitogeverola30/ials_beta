@@ -70,6 +70,15 @@ const GenerativeBackground = () => {
 
 // --- EVENT PAGE COMPONENT ---
 const EventPage = ({ event, onBack, onNavigate }) => {
+  // eslint-disable-next-line no-unused-vars
+  const [notification, setNotification] = React.useState(null);
+
+  const handlePaymentClick = () => {
+    setNotification('You need to sign in first before you can view the payments page');
+    onNavigate('signin');
+    setTimeout(() => setNotification(null), 5000);
+  };
+
   return (
     <div className="event-page-container">
       {/* --- HEADER SECTION --- */}
@@ -108,7 +117,13 @@ const EventPage = ({ event, onBack, onNavigate }) => {
           >
             Events
           </button>
-          <a href="#payments" className="nav-item-event">Payments</a>
+          <button 
+            className="nav-item-event"
+            onClick={handlePaymentClick}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '8px 24px' }}
+          >
+            Payments
+          </button>
           <button 
             className="nav-item-event" 
             onClick={() => onNavigate('about')}
@@ -141,6 +156,11 @@ const EventPage = ({ event, onBack, onNavigate }) => {
 
       {/* --- EVENT DETAIL SECTION --- */}
       <main className="event-main-content">
+        {notification && (
+          <div className="event-notification">
+            {notification}
+          </div>
+        )}
         <GenerativeWhiteBackground particleCount={60} />
         {event && (
           <div className="event-detail-wrapper">

@@ -71,13 +71,36 @@ const GenerativeBackground = () => {
   );
 };
 
+const EmailIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+);
+
+const EyeIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+);
+
+const EyeOffIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>
+);
+
 const SignUpPage = ({ onNavigate }) => {
   const [formData, setFormData] = useState({
     fullName: '',
+    email: '',
     studentId: '',
     program: 'Bachelor of Science in Biology',
     yearLevel: '1st Year',
+    password: '',
+    verifyPassword: '',
   });
+  const [showPassword, setShowPassword] = useState(false);
+  const [showVerifyPassword, setShowVerifyPassword] = useState(false);
+  const [notification, setNotification] = useState(null);
+
+  const handlePaymentClick = () => {
+    setNotification('You need to sign in first before you can view the payments page');
+    setTimeout(() => setNotification(null), 5000);
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -131,7 +154,12 @@ const SignUpPage = ({ onNavigate }) => {
           >
             Events
           </button>
-          <a href="#payments" className="signup-nav-item">Payments</a>
+          <button 
+            className="signup-nav-item"
+            onClick={handlePaymentClick}
+          >
+            Payments
+          </button>
           <button 
             className="signup-nav-item" 
             onClick={() => onNavigate('about')}
@@ -161,9 +189,17 @@ const SignUpPage = ({ onNavigate }) => {
 
       {/* --- MAIN CONTENT --- */}
       <main className="signup-main-content">
+        {notification && (
+          <div className="signup-notification">
+            {notification}
+          </div>
+        )}
         <GenerativeWhiteBackground particleCount={25} />
         <div className="signup-form-wrapper">
           <div className="signup-form-card">
+            <div className="signup-modal-logo">
+              <img src={logo} alt="Logo" className="signup-modal-logo-img" />
+            </div>
             <h1 className="signup-title">Create Account</h1>
 
             <form onSubmit={handleCreateAccount} className="signup-form">
@@ -177,6 +213,23 @@ const SignUpPage = ({ onNavigate }) => {
                     name="fullName"
                     placeholder="Full Name"
                     value={formData.fullName}
+                    onChange={handleInputChange}
+                    className="signup-input"
+                    required
+                  />
+                </div>
+              </div>
+
+              {/* Email Address Field */}
+              <div className="signup-form-group">
+                <label className="signup-label">Email Address</label>
+                <div className="signup-input-wrapper">
+                  <EmailIcon />
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Email Address"
+                    value={formData.email}
                     onChange={handleInputChange}
                     className="signup-input"
                     required
@@ -237,6 +290,52 @@ const SignUpPage = ({ onNavigate }) => {
                     <option>3rd Year</option>
                     <option>4th Year</option>
                   </select>
+                </div>
+              </div>
+
+              {/* Create Password Field */}
+              <div className="signup-form-group">
+                <label className="signup-label">Create Password</label>
+                <div className="signup-input-wrapper">
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    name="password"
+                    placeholder="Create Password"
+                    value={formData.password}
+                    onChange={handleInputChange}
+                    className="signup-input"
+                    required
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="password-toggle-btn"
+                  >
+                    {showPassword ? <EyeOffIcon /> : <EyeIcon />}
+                  </button>
+                </div>
+              </div>
+
+              {/* Verify Password Field */}
+              <div className="signup-form-group">
+                <label className="signup-label">Verify Password</label>
+                <div className="signup-input-wrapper">
+                  <input
+                    type={showVerifyPassword ? "text" : "password"}
+                    name="verifyPassword"
+                    placeholder="Verify Password"
+                    value={formData.verifyPassword}
+                    onChange={handleInputChange}
+                    className="signup-input"
+                    required
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowVerifyPassword(!showVerifyPassword)}
+                    className="password-toggle-btn"
+                  >
+                    {showVerifyPassword ? <EyeOffIcon /> : <EyeIcon />}
+                  </button>
                 </div>
               </div>
 
