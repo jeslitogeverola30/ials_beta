@@ -117,6 +117,63 @@
   flex-shrink: 0;
 }
 
+/* Top bar buttons container */
+.signup-top-bar-buttons {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+/* Sign In button */
+.signup-signin-btn {
+  background: transparent;
+  border: 2px solid white;
+  color: white;
+  padding: 10px 24px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+}
+
+.signup-signin-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.signup-signin-btn:active {
+  transform: translateY(0);
+}
+
+/* Sign Up button */
+.signup-signup-btn {
+  background: white;
+  border: none;
+  color: var(--primary-green);
+  padding: 10px 24px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  font-family: 'Poppins', sans-serif;
+}
+
+.signup-signup-btn:hover,
+.signup-signup-btn.active {
+  transform: translateY(-2px);
+  background: #f0fdf4;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+.signup-signup-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
 /* --- NAVBAR --- */
 
 .signup-navbar {
@@ -155,7 +212,7 @@
   font-family: inherit;
 }
 
-.signup-nav-item:hover {
+.signup-nav-item:not(.active):hover {
   color: #ffffff;
   background: rgba(255, 255, 255, 0.1);
 }
@@ -164,6 +221,7 @@
   background: #ffffff;
   color: #14532d;
   font-weight: 600;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
 }
 
 .signup-nav-item.more {
@@ -524,8 +582,8 @@
   }
 
   .signup-nav-item {
-    padding: 6px 12px;
-    font-size: 13px;
+    padding: 8px 14px;
+    font-size: 0.85rem;
   }
 
   .signup-main-content {
@@ -591,8 +649,8 @@
   }
 
   .signup-nav-item {
-    padding: 4px 8px;
-    font-size: 12px;
+    padding: 7px 10px;
+    font-size: 0.8rem;
   }
 
   .signup-main-content {

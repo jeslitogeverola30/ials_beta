@@ -8,10 +8,6 @@ const PhoneIcon = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
 );
 
-const ChevronDown = () => (
-  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-);
-
 // --- GENERATIVE BIO COMPONENTS ---
 const BioLeaf = ({ style }) => (
   <svg style={style} className="bio-particle" viewBox="0 0 24 24" fill="currentColor">
@@ -89,66 +85,70 @@ const ActivityCard = ({ onBack, onNavigate }) => {
   const semester = 'Semester 1';
   const academicYear = 'A.Y. 2025-2026';
 
-  return (
-    <div className="activity-card-page-container">
+ return (
+    <div className="about-page-container">
       {/* --- HEADER SECTION --- */}
-      <header className="activity-card-header">
+      <header className="about-header">
         <GenerativeBackground />
 
-        <div className="activity-card-top-bar">
-          <div className="activity-card-logo-container">
-            <div className="activity-card-logo-circle">
-              <img src={logo} alt="Logo" className="activity-card-logo-img" />
+        <div className="about-top-bar">
+          <div className="logo-container-about">
+            <div className="logo-circle-small-about">
+               <img src={logo} alt="Logo" className="logo-img-about" />
             </div>
-            <span className="activity-card-brand-name">Institute of Agriculture and Life Sciences</span>
+            <span className="brand-name-about">Institute of Agriculture and Life Sciences</span>
           </div>
-          <button className="activity-card-app-btn">
-            <PhoneIcon />
-            <span>Get the App</span>
-          </button>
+          <div className="about-top-bar-buttons">
+            <button className="app-btn-about">
+              <PhoneIcon />
+              <span>Get the App</span>
+            </button>
+            <button className="about-signin-btn" onClick={() => onNavigate('signin')}>Sign In</button>
+            <button className="about-signup-btn" onClick={() => onNavigate('signup')}>Sign Up</button>
+          </div>
         </div>
 
-        <nav className="activity-card-navbar">
+        <nav className="navbar-about">
           <button 
-            className="activity-card-nav-item active" 
+            className="nav-item-about" 
             onClick={() => onNavigate('home')}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '8px 24px' }}
           >
             Home
           </button>
           <button 
-            className="activity-card-nav-item" 
+            className="nav-item-about" 
             onClick={() => onNavigate('events')}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '8px 24px' }}
           >
             Events
           </button>
-          <a href="#payments" className="activity-card-nav-item">Payments</a>
+          <a href="#payments" className="nav-item-about">Payments</a>
           <button 
-            className="activity-card-nav-item" 
+            className="nav-item-about" 
             onClick={() => onNavigate('about')}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '8px 24px' }}
           >
             About Us
           </button>
           <button 
-            className="activity-card-nav-item" 
+            className="nav-item-about" 
             onClick={() => onNavigate('contact')}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '8px 24px' }}
           >
             Contact
           </button>
-          <div className="activity-card-nav-item more activity-card-dropdown">
-            More <ChevronDown />
-            <div className="activity-card-dropdown-menu">
-              <button 
-                className="activity-card-dropdown-item"
-                onClick={() => onNavigate('activity')}
-              >
-                Activity Clearance Card
-              </button>
-            </div>
-          </div>
+          <button 
+            className="nav-item-about active" 
+            onClick={() => onNavigate('activity')}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '8px 24px' }}
+          >
+            Activity Card
+          </button>
         </nav>
 
-        <div className="activity-card-curve-separator">
-          <svg viewBox="0 0 1440 320" className="activity-card-wave-svg" preserveAspectRatio="none">
+        <div className="curve-separator-about">
+          <svg viewBox="0 0 1440 320" className="wave-svg-about" preserveAspectRatio="none">
             <path fill="#ffffff" fillOpacity="1" d="M0,192L80,186.7C160,181,320,171,480,186.7C640,203,800,245,960,245.3C1120,245,1280,203,1360,181.3L1440,160L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path>
           </svg>
         </div>
@@ -158,9 +158,10 @@ const ActivityCard = ({ onBack, onNavigate }) => {
       <main className="activity-card-main-content">
         <GenerativeWhiteBackground particleCount={30} />
         <div className="activity-card-wrapper">
-          {/* Card Header */}
-          <div className="activity-card-header-section">
-            <div className="activity-card-header-top">
+          {/* Card Container with Header and Student */}
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            {/* Card Header */}
+            <div className="activity-card-header-section">
               <div className="activity-card-header-left">
                 <div className="activity-card-logo-org">
                   <img src={logo} alt="IALS-MS" className="activity-card-logo-org-img" />
@@ -171,61 +172,67 @@ const ActivityCard = ({ onBack, onNavigate }) => {
                 </div>
               </div>
             </div>
-          </div>
 
-          {/* Student Info */}
-          <div className="activity-card-student-section">
-            <div className="activity-card-student-info">
-              <img src={student.photo} alt={student.name} className="activity-card-student-photo" />
-              <div className="activity-card-student-details">
-                <h2>{student.name}</h2>
-                <p>{student.program} - {student.year}</p>
-                <p className="activity-card-student-id">{student.id}</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Activities Grid */}
-          <div className="activity-card-activities-section">
-            <div className="activity-card-activities-grid">
-              {activities.map((activity, index) => (
-                <div key={index} className="activity-card-activity-item">
-                  <div className="activity-card-calendar-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                      <line x1="16" y1="2" x2="16" y2="6"></line>
-                      <line x1="8" y1="2" x2="8" y2="6"></line>
-                      <line x1="3" y1="10" x2="21" y2="10"></line>
-                    </svg>
+            {/* Student Info and Activities Container */}
+            <div style={{ display: 'flex', gap: '0', width: '100%', minHeight: '400px' }}>
+              {/* Student Info - Left Side */}
+              <div className="activity-card-student-section" style={{ flex: '0 0 auto', borderRight: '2px solid #e0d5c5', paddingRight: '30px' }}>
+                <div className="activity-card-student-info" style={{ flexDirection: 'column' }}>
+                  <img src={student.photo} alt={student.name} className="activity-card-student-photo" />
+                  <div className="activity-card-student-details">
+                    <h2>{student.name}</h2>
+                    <p>{student.program} - {student.year}</p>
+                    <p className="activity-card-student-id">{student.id}</p>
                   </div>
-                  <p>{activity.name}</p>
-                  {activity.cleared && (
-                    <div className="activity-card-cleared-stamp">
-                      <svg viewBox="0 0 100 100" className="activity-card-stamp">
-                        <circle cx="50" cy="50" r="48" fill="none" stroke="#2a8a3d" strokeWidth="3"/>
-                        <circle cx="50" cy="50" r="45" fill="none" stroke="#2a8a3d" strokeWidth="2" strokeDasharray="5,3"/>
-                        <text x="50" y="55" textAnchor="middle" fontSize="24" fontWeight="bold" fill="#2a8a3d">CLEARED</text>
+                </div>
+              </div>
+
+              {/* Activities and Status - Right Side */}
+              <div style={{ flex: '1', display: 'flex', flexDirection: 'column', position: 'relative' }}>
+                {/* Activities Grid */}
+                <div className="activity-card-activities-section">
+                  <div className="activity-card-activities-grid">
+                    {activities.map((activity, index) => (
+                      <div key={index} className="activity-card-activity-item">
+                        <div className="activity-card-calendar-icon">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                          </svg>
+                        </div>
+                        <p>{activity.name}</p>
+                        {activity.cleared && (
+                          <div className="activity-card-cleared-stamp">
+                            <svg viewBox="0 0 100 100" className="activity-card-stamp">
+                              <circle cx="50" cy="50" r="48" fill="none" stroke="#2a8a3d" strokeWidth="3"/>
+                              <circle cx="50" cy="50" r="45" fill="none" stroke="#2a8a3d" strokeWidth="2" strokeDasharray="5,3"/>
+                              <text x="50" y="55" textAnchor="middle" fontSize="20" fontWeight="bold" fill="#2a8a3d">CLEARED</text>
+                            </svg>
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Overall Clearance Status */}
+                <div className="activity-card-status-section">
+                  <div className="activity-card-status-badge">
+                    <svg viewBox="0 0 100 100" className="activity-card-status-stamp">
+                      <circle cx="50" cy="50" r="48" fill="none" stroke="#2a8a3d" strokeWidth="3"/>
+                      <circle cx="50" cy="50" r="45" fill="none" stroke="#2a8a3d" strokeWidth="2" strokeDasharray="5,3"/>
+                      <text x="50" y="40" textAnchor="middle" fontSize="18" fontWeight="bold" fill="#2a8a3d">OFFICIALLY</text>
+                      <text x="50" y="62" textAnchor="middle" fontSize="18" fontWeight="bold" fill="#2a8a3d">CLEARED</text>
+                    </svg>
+                    <div className="activity-card-check-mark">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                        <polyline points="20 6 9 17 4 12"></polyline>
                       </svg>
                     </div>
-                  )}
+                  </div>
                 </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Overall Clearance Status */}
-          <div className="activity-card-status-section">
-            <div className="activity-card-status-badge">
-              <svg viewBox="0 0 100 100" className="activity-card-status-stamp">
-                <circle cx="50" cy="50" r="48" fill="none" stroke="#2a8a3d" strokeWidth="3"/>
-                <circle cx="50" cy="50" r="45" fill="none" stroke="#2a8a3d" strokeWidth="2" strokeDasharray="5,3"/>
-                <text x="50" y="40" textAnchor="middle" fontSize="20" fontWeight="bold" fill="#2a8a3d">OFFICIALLY</text>
-                <text x="50" y="65" textAnchor="middle" fontSize="20" fontWeight="bold" fill="#2a8a3d">CLEARED</text>
-              </svg>
-              <div className="activity-card-check-mark">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
               </div>
             </div>
           </div>
@@ -233,29 +240,29 @@ const ActivityCard = ({ onBack, onNavigate }) => {
       </main>
 
       {/* --- FOOTER --- */}
-      <footer className="activity-card-footer">
+       <footer className="about-footer">
         <GenerativeBackground />
 
-        <div className="activity-card-footer-curve">
-          <svg viewBox="0 0 1440 320" className="activity-card-footer-wave-svg" preserveAspectRatio="none">
+        <div className="about-footer-curve">
+          <svg viewBox="0 0 1440 320" className="about-footer-wave-svg" preserveAspectRatio="none">
             <path fill="#1e5c25" fillOpacity="1" d="M0,96L80,112C160,128,320,160,480,160C640,160,800,128,960,112C1120,96,1280,96,1360,96L1440,96L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path>
           </svg>
         </div>
 
-        <div className="activity-card-footer-content">
-          <div className="activity-card-footer-logo-wrapper">
-             <div className="activity-card-logo-circle-footer">
-                <img src={logo} alt="Logo" className="activity-card-logo-img-footer" />
+        <div className="about-footer-content">
+          <div className="about-footer-logo-wrapper">
+             <div className="logo-circle-footer-about">
+                <img src={logo} alt="Logo" className="logo-img-small-about" />
              </div>
           </div>
           
-          <p className="activity-card-footer-text">Institute of Agriculture and Life Sciences Student Organization</p>
+          <p className="about-footer-text">Institute of Agriculture and Life Sciences Student Organization</p>
           
-          <div className="activity-card-footer-divider-line"></div>
+          <div className="about-footer-divider-line"></div>
           
-          <p className="activity-card-footer-sub">© DOSCST 2016 • All Rights Reserved</p>
+          <p className="about-footer-sub">© DOSCST 2016 • All Rights Reserved</p>
           
-          <div className="activity-card-footer-links">
+          <div className="about-footer-links">
             <span>Privacy Policy</span>
             <span>Terms of Service</span>
           </div>

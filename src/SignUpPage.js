@@ -108,10 +108,14 @@ const SignUpPage = ({ onNavigate }) => {
             </div>
             <span className="signup-brand-name">Institute of Agriculture and Life Sciences</span>
           </div>
-          <button className="signup-app-btn">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
-            <span>Get the App</span>
-          </button>
+          <div className="signup-top-bar-buttons">
+            <button className="signup-app-btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+              <span>Get the App</span>
+            </button>
+            <button className="signup-signin-btn" onClick={() => onNavigate('signin')}>Sign In</button>
+            <button className="signup-signup-btn active" onClick={() => onNavigate('signup')}>Sign Up</button>
+          </div>
         </div>
 
         <nav className="signup-navbar">
@@ -140,18 +144,12 @@ const SignUpPage = ({ onNavigate }) => {
           >
             Contact
           </button>
-          <div className="signup-nav-item more signup-dropdown">
-            More
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-            <div className="signup-dropdown-menu">
-              <button 
-                className="signup-dropdown-item"
-                onClick={() => onNavigate('activity')}
-              >
-                Activity Clearance Card
-              </button>
-            </div>
-          </div>
+          <button 
+            className="signup-nav-item" 
+            onClick={() => onNavigate('activity')}
+          >
+            Activity Card
+          </button>
         </nav>
 
         <div className="signup-curve-separator">

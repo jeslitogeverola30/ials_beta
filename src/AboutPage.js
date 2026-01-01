@@ -8,10 +8,6 @@ const PhoneIcon = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
 );
 
-const ChevronDown = () => (
-  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-);
-
 const TargetIcon = () => (
   <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
 );
@@ -169,10 +165,14 @@ const AboutPage = ({ onBack, onNavigate }) => {
             </div>
             <span className="brand-name-about">Institute of Agriculture and Life Sciences</span>
           </div>
-          <button className="app-btn-about">
-            <PhoneIcon />
-            <span>Get the App</span>
-          </button>
+          <div className="about-top-bar-buttons">
+            <button className="app-btn-about">
+              <PhoneIcon />
+              <span>Get the App</span>
+            </button>
+            <button className="about-signin-btn" onClick={() => onNavigate('signin')}>Sign In</button>
+            <button className="about-signup-btn" onClick={() => onNavigate('signup')}>Sign Up</button>
+          </div>
         </div>
 
         <nav className="navbar-about">
@@ -191,7 +191,13 @@ const AboutPage = ({ onBack, onNavigate }) => {
             Events
           </button>
           <a href="#payments" className="nav-item-about">Payments</a>
-          <a href="#about" className="nav-item-about active">About Us</a>
+          <button 
+            className="nav-item-about active"
+            onClick={() => onNavigate('about')}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '8px 24px' }}
+          >
+            About Us
+          </button>
           <button 
             className="nav-item-about" 
             onClick={() => onNavigate('contact')}
@@ -199,17 +205,13 @@ const AboutPage = ({ onBack, onNavigate }) => {
           >
             Contact
           </button>
-          <div className="nav-item-about more about-dropdown">
-            More <ChevronDown />
-            <div className="about-dropdown-menu">
-              <button 
-                className="about-dropdown-item"
-                onClick={() => onNavigate('activity')}
-              >
-                Activity Clearance Card
-              </button>
-            </div>
-          </div>
+          <button 
+            className="nav-item-about" 
+            onClick={() => onNavigate('activity')}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '8px 24px' }}
+          >
+            Activity Card
+          </button>
         </nav>
 
         <div className="curve-separator-about">

@@ -87,7 +87,7 @@ const GenerativeWhiteBackground = ({ particleCount = 30 }) => {
       animationDuration: `${p.duration}s`,
       animationDelay: `${p.delay}s`,
       transform: `rotate(${p.rotation}deg)`,
-      color: `rgba(42, 138, 61, ${0.15 + Math.random() * 0.15})`, // Visible green color
+      color: `rgba(34, 197, 94, ${0.35 + Math.random() * 0.25})`, // Increased opacity for better visibility
     };
 
     switch (p.type) {

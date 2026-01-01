@@ -7,6 +7,7 @@ import ContactPage from './ContactPage';
 import SignInPage from './SignInPage';
 import SignUpPage from './SignUpPage';
 import ActivityCard from './ActivityCard';
+import GenerativeWhiteBackground from './GenerativeWhiteBackground';
 
 // --- ICONS ---
 const PhoneIcon = () => (
@@ -27,10 +28,6 @@ const QRIcon = () => (
 
 const CheckIcon = () => (
   <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feature-icon"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-);
-
-const ChevronDown = () => (
-  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6"/></svg>
 );
 
 // --- NEW GENERATIVE BIO COMPONENTS ---
@@ -99,7 +96,7 @@ const GenerativeBackground = () => {
 
 const App = () => {
   const [selectedEvent, setSelectedEvent] = useState(null);
-  const [currentPage, setCurrentPage] = useState('home'); // 'home', 'about', 'contact', 'signin', 'signup'
+  const [currentPage, setCurrentPage] = useState('home'); // 'home', 'events', 'about', 'contact', 'signin', 'signup'
 
   // Sample events data
   const events = [
@@ -193,6 +190,155 @@ const App = () => {
     return <EventPage event={selectedEvent} onBack={() => setSelectedEvent(null)} onNavigate={(page) => {
       setSelectedEvent(null);
       if (page === 'events') {
+        setCurrentPage('events');
+      } else {
+        setCurrentPage(page);
+      }
+    }} />;
+  }
+
+  if (currentPage === 'events') {
+    return (
+      <div className="container">
+        {/* --- HEADER SECTION --- */}
+        <header className="header">
+          <GenerativeBackground />
+
+          <div className="top-bar">
+            <div className="logo-container">
+              <div className="logo-circle-small">
+                 <img src={logo} alt="Logo" className="logo-img" />
+              </div>
+              <span className="brand-name">Institute of Agriculture and Life Sciences</span>
+            </div>
+            <div className="top-bar-buttons">
+              <button className="app-btn">
+                <PhoneIcon />
+                <span>Get the App</span>
+              </button>
+              <button className="contact-signin-btn" onClick={() => setCurrentPage('signin')}>Sign In</button>
+              <button className="contact-signup-btn" onClick={() => setCurrentPage('signup')}>Sign Up</button>
+            </div>
+          </div>
+
+          <nav className="navbar">
+            <button 
+              className="nav-item" 
+              onClick={() => setCurrentPage('home')}
+              style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '8px 24px' }}
+            >
+              Home
+            </button>
+            <button 
+              className="nav-item active"
+              onClick={() => setCurrentPage('events')}
+              style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '8px 24px' }}
+            >
+              Events
+            </button>
+            <a href="#payments" className="nav-item">Payments</a>
+            <button 
+              className={`nav-item ${currentPage === 'about' ? 'active' : ''}`}
+              onClick={() => setCurrentPage('about')}
+              style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '8px 24px' }}
+            >
+              About Us
+            </button>
+            <button 
+              className={`nav-item ${currentPage === 'contact' ? 'active' : ''}`}
+              onClick={() => setCurrentPage('contact')}
+              style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '8px 24px' }}
+            >
+              Contact
+            </button>
+            <button 
+              className={`nav-item ${currentPage === 'activity' ? 'active' : ''}`}
+              onClick={() => setCurrentPage('activity')}
+              style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '8px 24px' }}
+            >
+              Activity Card
+            </button>
+          </nav>
+
+          <div className="curve-separator">
+            <svg viewBox="0 0 1440 320" className="wave-svg" preserveAspectRatio="none">
+              <path fill="#ffffff" fillOpacity="1" d="M0,192L80,186.7C160,181,320,171,480,186.7C640,203,800,245,960,245.3C1120,245,1280,203,1360,181.3L1440,160L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path>
+            </svg>
+          </div>
+        </header>
+
+        {/* --- EVENTS PAGE MAIN CONTENT --- */}
+        <main className="main-content">
+          <div className="events-section" style={{ marginTop: '-100px' }}>
+            <h2 style={{ color: 'white' }}>Events</h2>
+            <p className="events-subtitle" style={{ color: 'white' }}>Stay updated with upcoming and past student activities</p>
+            
+            <div className="events-filters">
+              <button className="filter-btn active">Upcoming</button>
+              <button className="filter-btn">Past</button>
+            </div>
+
+            <div className="events-grid">
+              {events.map((event) => (
+                <div key={event.id} className="event-card" onClick={() => setSelectedEvent(event)}>
+                  <div className="event-card-image">
+                    <img src={event.image} alt={event.title} />
+                    <span className="event-card-status">{event.status}</span>
+                  </div>
+                  <div className="event-card-content">
+                    <h3>{event.title}</h3>
+                    <div className="event-card-meta">
+                      <span className="meta-item">📅 {event.date}, {event.time}</span>
+                      <span className="meta-item">📍 {event.location}</span>
+                    </div>
+                    <p>{event.description.substring(0, 100)}...</p>
+                    <button className="event-card-btn">
+                      {event.status === 'Upcoming' ? 'Register' : 'View Details'}
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </main>
+
+        {/* --- FOOTER --- */}
+        <footer className="footer">
+          <GenerativeBackground />
+
+          <div className="footer-curve">
+            <svg viewBox="0 0 1440 320" className="footer-wave-svg" preserveAspectRatio="none">
+              <path fill="#1e5c25" fillOpacity="1" d="M0,96L80,112C160,128,320,160,480,160C640,160,800,128,960,112C1120,96,1280,96,1360,96L1440,96L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path>
+            </svg>
+          </div>
+
+          <div className="footer-content">
+            <div className="footer-logo-wrapper">
+               <div className="logo-circle-footer">
+                  <img src={logo} alt="Logo" className="logo-img-small" />
+               </div>
+            </div>
+            
+            <p className="footer-text">Institute of Agriculture and Life Sciences Student Organization</p>
+            
+            <div className="footer-divider-line"></div>
+            
+            <p className="footer-sub">© DOSCST 2016 • All Rights Reserved</p>
+            
+            <div className="footer-links">
+              <span>Privacy Policy</span>
+              <span>Terms of Service</span>
+            </div>
+          </div>
+        </footer>
+      </div>
+    );
+  }
+
+  if (selectedEvent) {
+    return <EventPage event={selectedEvent} onBack={() => setSelectedEvent(null)} onNavigate={(page) => {
+      setSelectedEvent(null);
+      if (page === 'events') {
         setCurrentPage('home');
       } else {
         setCurrentPage(page);
@@ -277,53 +423,53 @@ const App = () => {
             </div>
             <span className="brand-name">Institute of Agriculture and Life Sciences</span>
           </div>
-          <button className="app-btn">
-            <PhoneIcon />
-            <span>Get the App</span>
-          </button>
+          <div className="top-bar-buttons">
+            <button className="app-btn">
+              <PhoneIcon />
+              <span>Get the App</span>
+            </button>
+            <button className="contact-signin-btn" onClick={() => setCurrentPage('signin')}>Sign In</button>
+            <button className="contact-signup-btn" onClick={() => setCurrentPage('signup')}>Sign Up</button>
+          </div>
         </div>
 
         <nav className="navbar">
-          <a href="#home" className="nav-item active">Home</a>
           <button 
-            className="nav-item" 
-            onClick={() => {
-              // Scroll to events section
-              const eventsSection = document.querySelector('.events-section');
-              if (eventsSection) {
-                eventsSection.scrollIntoView({ behavior: 'smooth' });
-              }
-            }}
+            className={`nav-item ${currentPage === 'home' ? 'active' : ''}`}
+            onClick={() => setCurrentPage('home')}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '8px 24px' }}
+          >
+            Home
+          </button>
+          <button 
+            className={`nav-item ${currentPage === 'events' ? 'active' : ''}`}
+            onClick={() => setCurrentPage('events')}
             style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '8px 24px' }}
           >
             Events
           </button>
           <a href="#payments" className="nav-item">Payments</a>
           <button 
-            className="nav-item" 
+            className={`nav-item ${currentPage === 'about' ? 'active' : ''}`}
             onClick={() => setCurrentPage('about')}
             style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '8px 24px' }}
           >
             About Us
           </button>
           <button 
-            className="nav-item" 
+            className={`nav-item ${currentPage === 'contact' ? 'active' : ''}`}
             onClick={() => setCurrentPage('contact')}
             style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '8px 24px' }}
           >
             Contact
           </button>
-          <div className="nav-item more dropdown">
-            More <ChevronDown />
-            <div className="dropdown-menu">
-              <button 
-                className="dropdown-item"
-                onClick={() => setCurrentPage('activity')}
-              >
-                Activity Clearance Card
-              </button>
-            </div>
-          </div>
+          <button 
+            className={`nav-item ${currentPage === 'activity' ? 'active' : ''}`}
+            onClick={() => setCurrentPage('activity')}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '8px 24px' }}
+          >
+            Activity Card
+          </button>
         </nav>
 
         {/* This SVG creates the curved separation */}
@@ -336,6 +482,8 @@ const App = () => {
 
       {/* --- HERO SECTION --- */}
       <main className="main-content">
+        <GenerativeWhiteBackground particleCount={60} />
+        
         <div className="hero-logo-wrapper">
           <div className="main-logo">
              <div className="seal-outer">
@@ -391,38 +539,6 @@ const App = () => {
           </div>
         </div>
 
-        {/* --- EVENTS SECTION --- */}
-        <div className="events-section">
-          <h2>Events</h2>
-          <p className="events-subtitle">Stay updated with upcoming and past student activities</p>
-          
-          <div className="events-filters">
-            <button className="filter-btn active">Upcoming</button>
-            <button className="filter-btn">Past</button>
-          </div>
-
-          <div className="events-grid">
-            {events.map((event) => (
-              <div key={event.id} className="event-card" onClick={() => setSelectedEvent(event)}>
-                <div className="event-card-image">
-                  <img src={event.image} alt={event.title} />
-                  <span className="event-card-status">{event.status}</span>
-                </div>
-                <div className="event-card-content">
-                  <h3>{event.title}</h3>
-                  <div className="event-card-meta">
-                    <span className="meta-item">📅 {event.date}, {event.time}</span>
-                    <span className="meta-item">📍 {event.location}</span>
-                  </div>
-                  <p>{event.description.substring(0, 100)}...</p>
-                  <button className="event-card-btn">
-                    {event.status === 'Upcoming' ? 'Register' : 'View Details'}
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
       </main>
 
       {/* --- FOOTER --- */}

@@ -137,6 +137,62 @@
   flex-shrink: 0;
 }
 
+/* Top bar buttons container */
+.contact-top-bar-buttons {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+/* Sign In button */
+.contact-signin-btn {
+  background: transparent;
+  border: 2px solid white;
+  color: white;
+  padding: 10px 24px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+}
+
+.contact-signin-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.contact-signin-btn:active {
+  transform: translateY(0);
+}
+
+/* Sign Up button */
+.contact-signup-btn {
+  background: white;
+  border: none;
+  color: var(--primary-green);
+  padding: 10px 24px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  font-family: 'Poppins', sans-serif;
+}
+
+.contact-signup-btn:hover {
+  transform: translateY(-2px);
+  background: #f0fdf4;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+.contact-signup-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
 /* NAVBAR */
 .navbar-contact {
   display: inline-flex;
@@ -844,7 +900,7 @@
 
   .nav-item-contact {
     padding: 7px 10px;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
   }
 
   .nav-item-contact.more {

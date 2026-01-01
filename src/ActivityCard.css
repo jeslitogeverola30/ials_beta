@@ -75,6 +75,62 @@
   border-color: rgba(255, 255, 255, 0.4);
 }
 
+/* Top bar buttons container */
+.activity-card-top-bar-buttons {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+/* Sign In button */
+.activity-card-signin-btn {
+  background: transparent;
+  border: 2px solid white;
+  color: white;
+  padding: 10px 24px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+}
+
+.activity-card-signin-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.activity-card-signin-btn:active {
+  transform: translateY(0);
+}
+
+/* Sign Up button */
+.activity-card-signup-btn {
+  background: white;
+  border: none;
+  color: #1e5c25;
+  padding: 10px 24px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  font-family: 'Poppins', sans-serif;
+}
+
+.activity-card-signup-btn:hover {
+  transform: translateY(-2px);
+  background: #f0fdf4;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+.activity-card-signup-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
 /* ===== NAVBAR STYLES ===== */
 .activity-card-navbar {
   display: flex;
@@ -123,6 +179,7 @@
   display: flex;
   align-items: center;
   gap: 5px;
+  outline: none;
 }
 
 .activity-card-dropdown-menu {
@@ -142,6 +199,10 @@
 }
 
 .activity-card-dropdown:hover .activity-card-dropdown-menu {
+  display: flex;
+}
+
+.activity-card-dropdown.open .activity-card-dropdown-menu {
   display: flex;
 }
 
@@ -184,20 +245,24 @@
 }
 
 .activity-card-wrapper {
-  max-width: 900px;
+  max-width: 1000px;
   margin: 0 auto;
-  background-color: #fef8f0;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(42, 138, 61, 0.1);
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
   overflow: hidden;
+  position: relative;
 }
 
 /* Card Header Section */
 .activity-card-header-section {
   background: linear-gradient(135deg, #1e5c25 0%, #2a8a3d 100%);
-  padding: 25px;
+  padding: 30px;
   color: white;
-  border-bottom: 3px solid #14532d;
+  border-bottom: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 .activity-card-header-top {
@@ -245,36 +310,41 @@
 
 /* Student Info Section */
 .activity-card-student-section {
-  padding: 30px 25px;
-  border-bottom: 2px solid #e0d5c5;
+  padding: 40px 30px;
+  border-bottom: none;
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  position: relative;
 }
 
 .activity-card-student-info {
   display: flex;
   gap: 25px;
-  align-items: center;
+  align-items: flex-start;
+  flex-shrink: 0;
 }
 
 .activity-card-student-photo {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  border-radius: 12px;
   object-fit: cover;
-  border: 3px solid #2a8a3d;
+  border: 3px solid #e0e0e0;
   flex-shrink: 0;
 }
 
 .activity-card-student-details h2 {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 700;
   color: #1e5c25;
-  margin: 0 0 8px 0;
+  margin: 10px 0 5px 0;
 }
 
 .activity-card-student-details p {
-  font-size: 14px;
-  color: #555;
-  margin: 4px 0;
+  font-size: 13px;
+  color: #666;
+  margin: 3px 0;
 }
 
 .activity-card-student-id {
@@ -285,37 +355,46 @@
 
 /* Activities Grid Section */
 .activity-card-activities-section {
-  padding: 30px 25px;
-  border-bottom: 2px solid #e0d5c5;
+  padding: 30px;
+  border-bottom: none;
+  background-color: #fafafa;
+  flex: 1;
 }
 
 .activity-card-activities-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 20px;
 }
 
 .activity-card-activity-item {
-  background-color: white;
+  background: #f0f0f0;
+  color: #555;
   padding: 20px;
-  border-radius: 8px;
-  border: 2px solid #e0d5c5;
+  border-radius: 12px;
+  border: 2px dashed #d0d0d0;
+  box-shadow: none;
   position: relative;
-  transition: all 0.3s ease;
+  transition: box-shadow 0.2s, transform 0.2s;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
+  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+  overflow: hidden;
+  text-align: center;
+  align-items: center;
 }
 
 .activity-card-activity-item:hover {
-  border-color: #2a8a3d;
-  box-shadow: 0 2px 8px rgba(42, 138, 61, 0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transform: none;
 }
 
 .activity-card-calendar-icon {
-  width: 30px;
-  height: 30px;
-  color: #2a8a3d;
+  width: 40px;
+  height: 40px;
+  color: #ccc;
+  opacity: 0.7;
 }
 
 .activity-card-calendar-icon svg {
@@ -325,18 +404,18 @@
 }
 
 .activity-card-activity-item p {
-  font-size: 14px;
+  font-size: 0.9rem;
   font-weight: 600;
-  color: #333;
+  color: #555;
   margin: 0;
 }
 
 .activity-card-cleared-stamp {
   position: absolute;
-  top: -10px;
-  right: -10px;
-  width: 80px;
-  height: 80px;
+  top: -20px;
+  right: -20px;
+  width: 100px;
+  height: 100px;
 }
 
 .activity-card-stamp {
@@ -347,17 +426,20 @@
 
 /* Status Badge Section */
 .activity-card-status-section {
-  padding: 40px 25px;
+  padding: 0 30px 30px 30px;
   text-align: right;
   position: relative;
-  background: linear-gradient(135deg, rgba(42, 138, 61, 0.05) 0%, rgba(30, 92, 37, 0.05) 100%);
+  background: #fafafa;
 }
 
 .activity-card-status-badge {
   position: relative;
-  width: 140px;
-  height: 140px;
+  width: 160px;
+  height: 160px;
   margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .activity-card-status-stamp {
@@ -371,8 +453,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 60px;
-  height: 60px;
+  width: 80px;
+  height: 80px;
   background-color: #2a8a3d;
   border-radius: 50%;
   display: flex;
@@ -380,11 +462,12 @@
   justify-content: center;
   color: white;
   font-weight: bold;
+  z-index: 2;
 }
 
 .activity-card-check-mark svg {
-  width: 35px;
-  height: 35px;
+  width: 45px;
+  height: 45px;
 }
 
 /* ===== FOOTER STYLES ===== */
@@ -545,7 +628,7 @@
   }
 
   .activity-card-activities-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 15px;
   }
 
@@ -683,7 +766,7 @@
   }
 
   .activity-card-activities-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 12px;
   }
 

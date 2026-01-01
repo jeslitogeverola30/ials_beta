@@ -100,10 +100,14 @@ const SignInPage = ({ onNavigate }) => {
             </div>
             <span className="signin-brand-name">Institute of Agriculture and Life Sciences</span>
           </div>
-          <button className="signin-app-btn">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
-            <span>Get the App</span>
-          </button>
+          <div className="signin-top-bar-buttons">
+            <button className="signin-app-btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+              <span>Get the App</span>
+            </button>
+            <button className="signin-signin-btn active" onClick={() => onNavigate('signin')}>Sign In</button>
+            <button className="signin-signup-btn" onClick={() => onNavigate('signup')}>Sign Up</button>
+          </div>
         </div>
 
         <nav className="signin-navbar">
@@ -132,18 +136,12 @@ const SignInPage = ({ onNavigate }) => {
           >
             Contact
           </button>
-          <div className="signin-nav-item more signin-dropdown">
-            More
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-            <div className="signin-dropdown-menu">
-              <button 
-                className="signin-dropdown-item"
-                onClick={() => onNavigate('activity')}
-              >
-                Activity Clearance Card
-              </button>
-            </div>
-          </div>
+          <button 
+            className="signin-nav-item" 
+            onClick={() => onNavigate('activity')}
+          >
+            Activity Card
+          </button>
         </nav>
 
         <div className="signin-curve-separator">

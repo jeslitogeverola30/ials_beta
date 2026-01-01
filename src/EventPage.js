@@ -8,10 +8,6 @@ const PhoneIcon = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
 );
 
-const ChevronDown = () => (
-  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-);
-
 const CalendarSmall = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
 );
@@ -87,10 +83,14 @@ const EventPage = ({ event, onBack, onNavigate }) => {
             </div>
             <span className="brand-name-event">Institute of Agriculture and Life Sciences</span>
           </div>
-          <button className="app-btn-event">
-            <PhoneIcon />
-            <span>Get the App</span>
-          </button>
+          <div className="event-top-bar-buttons">
+            <button className="app-btn-event">
+              <PhoneIcon />
+              <span>Get the App</span>
+            </button>
+            <button className="event-signin-btn" onClick={() => onNavigate('signin')}>Sign In</button>
+            <button className="event-signup-btn" onClick={() => onNavigate('signup')}>Sign Up</button>
+          </div>
         </div>
 
         <nav className="navbar-event">
@@ -101,7 +101,13 @@ const EventPage = ({ event, onBack, onNavigate }) => {
           >
             Home
           </button>
-          <a href="#events" className="nav-item-event active">Events</a>
+          <button 
+            className="nav-item-event active"
+            onClick={() => onNavigate('events')}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '8px 24px' }}
+          >
+            Events
+          </button>
           <a href="#payments" className="nav-item-event">Payments</a>
           <button 
             className="nav-item-event" 
@@ -117,17 +123,13 @@ const EventPage = ({ event, onBack, onNavigate }) => {
           >
             Contact
           </button>
-          <div className="nav-item-event more event-dropdown">
-            More <ChevronDown />
-            <div className="event-dropdown-menu">
-              <button 
-                className="event-dropdown-item"
-                onClick={() => onNavigate('activity')}
-              >
-                Activity Clearance Card
-              </button>
-            </div>
-          </div>
+          <button 
+            className="nav-item-event" 
+            onClick={() => onNavigate('activity')}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '8px 24px' }}
+          >
+            Activity Card
+          </button>
         </nav>
 
         <div className="curve-separator-event">
@@ -139,7 +141,7 @@ const EventPage = ({ event, onBack, onNavigate }) => {
 
       {/* --- EVENT DETAIL SECTION --- */}
       <main className="event-main-content">
-        <GenerativeWhiteBackground particleCount={30} />
+        <GenerativeWhiteBackground particleCount={60} />
         {event && (
           <div className="event-detail-wrapper">
             {/* Event Image */}
